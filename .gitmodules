@@ -1,0 +1,4 @@
+[submodule "mcil_evaluation_calvin/calvin"]
+	path = mcil_evaluation_calvin/calvin
+	url = https://github.com/NikeHop/calvin
+	branch = master

@@ -1,0 +1,68 @@
+# Byte-compiled files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+.env/
+*.venv/
+
+# Distribution / Packaging
+build/
+dist/
+*.egg-info/
+pip-wheel-metadata/
+
+# Logs & Debug files
+*.log
+debug.log
+
+# IDE and Editor settings
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Testing
+.tox/
+.nox/
+.pytest_cache/
+
+# Django / Flask specific
+*.sqlite3
+instance/
+.env
+config.json
+
+# Coverage reports
+.coverage
+htmlcov/
+*.cover
+.cache
+nosetests.xml
+coverage.xml
+
+# MyPy & Pylint
+.mypy_cache/
+.pylint.d/
+
+# Docker
+docker-compose.override.yml
+.dockerignore
+
+# Temporary files
+*.tmp
+*.swp
+*.swo
+
+# Custom ignores
+scripts
+datasets
+model_store
+*err
+*out
