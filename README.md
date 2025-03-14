@@ -1,4 +1,4 @@
-# Evaluation MCIL policy in CALVIN
+# 🏆 Evaluation MCIL policy in CALVIN
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 Code to evaluate MCIL policies trained for the CALVIN environment using the following [repo](https://github.com/NikeHop/PlaySegmentation-AAAI2025).
