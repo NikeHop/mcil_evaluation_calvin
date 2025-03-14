@@ -2,8 +2,8 @@
 
 import math
 
-import clip
-import numpy as np
+from typing import Tuple
+
 import pytorch_lightning as pl
 import torch
 import torch.nn as nn
@@ -11,14 +11,18 @@ import torch.nn.functional as F
 
 from torch.distributions import MultivariateNormal, kl_divergence
 from torch.optim import Adam
-from typing import Tuple
-import clip
 
+
+"""
+This code makes use of the CALVIN codebase https://github.com/mees/calvin.
+Copyright (c) 2021 Oier Mees
+This code is licensed under the MIT License. See the LICENSE file for details.
+"""
 
 class MCIL(pl.LightningModule):
     """
     MCIL (Multi Context Imitation Learning) LightningModule.
-
+    
     Args:
         config (dict): Configuration dictionary.
 

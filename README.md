@@ -28,3 +28,8 @@ From the `./mcil_evaluation_calvin` directory run the following command:
 ```
 python train.py --config ./config/mcil_evaluation.yaml --checkpoint PATH_TO_CHECKPOINT 
 ```
+
+
+## Acknowledgments
+
+This code uses the [CALVIN](https://github.com/mees/calvin) repo.
