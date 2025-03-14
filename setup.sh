@@ -1,8 +1,11 @@
 #! /bin/bash
 
-mkdir -p ../datasets/calvin
+set -e 
 
-cd ../datasets/calvin
+# Download the dataset
+mkdir -p ./datasets/calvin
+
+cd ./datasets/calvin
 
 
 if [ -f "./calvin_debug_dataset.zip" ]; then
@@ -21,7 +24,6 @@ else
 fi
 
 
-
 if [ -f "./task_D_D.zip" ]; then
     echo "File already exists, no download needed"
 else
@@ -38,7 +40,21 @@ else
 fi
 
 
+# Back to base dir 
+cd ../../
+
 # Create conda environment 
-conda create -n mcil_evaluation_calvin python=3.8
-conda activate mcil_evaluation_calvin
+source $CONDA_PREFIX/bin/activate
+conda create -n mcil_evaluation_calvin_2 python=3.8
+conda activate mcil_evaluation_calvin_2
+
+
+cd ./mcil_evaluation_calvin/calvin/calvin_env/tacto
+pip install -e . 
+cd ..
+pip install -e .
+cd ..
+cd  ./calvin_models
+pip install -e .
+cd ../../..
 pip install -e .

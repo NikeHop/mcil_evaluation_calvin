@@ -8,14 +8,10 @@ logging:
   mode: online
   project: play_segmentation
   tags: ["MCIL","CALVIN","Evaluation"]
-  model_directory: ../../model_store
+  vis_directory: ../visualizations
 
 data:
-  debug: True
   dataset_directory: "../datasets/calvin/task_D_D"
-  batch_size: 32
-  num_workers: 2
-  episode_filename: "auto_lang_ann.npy"
   task_embeddings: False
   evaluation:
     random_robot_state: False
@@ -23,57 +19,11 @@ data:
     n_videos_to_record: 5
 
 trainer:
-  lr: 0.00005
-  beta: 0.001
-  std: 0.01
-  num_classes: 256
-  act_min_bound: [-0.432188, -0.545456, 0.293439, -3.141593, -0.811348, -3.141573, -1.0]
-  act_max_bound: [0.42977, 0.139396, 0.796262, 3.141592, 0.638583, 3.141551, 1.0]
-  log_scale_min: -7
-  n_dist: 10
-  model_directory: "../model_store"
-
   model:
     action_dim: 7
-    latent_dim: 256
-    lang_dim: 384
-    obs_dim: 64
-    gripper_obs_dim: 32
-    n_dist: 10
-    only_stop: False
-
-    encoder:
-      context_length: -1
-      use_positional_encodings: True
-      num_layers: 6
-      nhead: 8
-      input_dim: 1024
-      hidden_dim: 2048
-      dropout: 0
-    decoder:
-      context_length: 4
-      use_positional_encodings: True
-      num_layers: 6
-      nhead: 8
-      input_dim: 1024
-      hidden_dim: 2048
-      dropout: 0
-    prior:
-      num_layers: 3
-      hidden_dim: 2048
-      dropout: 0
-    goal_encoder:
-      input_dimension: 1024
-      hidden_dimension: 1024
-      output_dimension: 32
-      n_layers: 2
-  
   vlm:
     name: "RN50"
     download_root: "../model_store/clip_models" 
-
   load:
-    load: True
-    checkpoint: "checkpoints/epoch=4-step=47740.ckpt"
-    experiment_name: "mcil_calvin/data_driven_cc"
-    run_id: 1k7szrtv
+    experiment_name: "mcil_evaluation_calvin"
+    run_id: "1"

@@ -8,34 +8,53 @@ import yaml
 
 from calvin_agent.evaluation.evaluate_policy import evaluate_calvin, set_up_eval_config
 
-from trainer import MCIL 
+from trainer import MCIL
 
-def evaluate_mcil_calvin(model, config):
+
+def evaluate_mcil_calvin(model: MCIL, config: dict) -> None:
+    """
+    Evaluates the MCIL model using the Calvin evaluation method.
+
+    Args:
+        model (MCIL): The MCIL model to evaluate.
+        config (dict): The configuration for evaluation.
+
+    Returns:
+        None
+    """
     eval_config = set_up_eval_config(config, model)
 
     with torch.no_grad():
         evaluate_calvin(eval_config)
 
 
-if __name__=="__main__":
-    parser = argparse.ArgumentParser(description='Evaluate MCIL policy in CALVIN environment.')
-    parser.add_argument('--config', type=str, default='config.json', help='Path to config file.')
-    parser.add_argument('--checkpoint', type=str, default=None, help='Path to checkpoint file.')
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(
+        description="Evaluate MCIL policy in CALVIN environment."
+    )
+    parser.add_argument(
+        "--config", type=str, default="config.json", help="Path to config file."
+    )
+    parser.add_argument(
+        "--checkpoint", type=str, default=None, help="Path to checkpoint file."
+    )
     args = parser.parse_args()
 
-    # Load config 
-    with open(args.config, 'r') as f:
+    # Load config
+    with open(args.config, "r") as f:
         config = yaml.safe_load(f)
-    
-    # Setup wandb logging 
+
+    # Setup wandb logging
     wandb.init(
         project=config["logging"]["project"],
         mode=config["logging"]["mode"],
         tags=config["logging"]["tags"],
-        name=config['logging']['experiment_name'],
+        name=config["logging"]["experiment_name"],
         dir="../results",
     )
-    # Load MCIL trainer 
-    mcil = MCIL.load_from_checkpoint(args.checkpoint,device=config["device"]).to(config["device"])
-    
-    evaluate_mcil_calvin(mcil,config)
+    # Load MCIL trainer
+    mcil = MCIL.load_from_checkpoint(args.checkpoint, device=config["device"]).to(
+        config["device"]
+    )
+
+    evaluate_mcil_calvin(mcil, config)

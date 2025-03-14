@@ -64,5 +64,6 @@ docker-compose.override.yml
 scripts
 datasets
 model_store
+visualizations
 *err
 *out
