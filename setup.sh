@@ -45,8 +45,8 @@ cd ../../
 
 # Create conda environment 
 source $CONDA_PREFIX/bin/activate
-conda create -n mcil_evaluation_calvin_2 python=3.8
-conda activate mcil_evaluation_calvin_2
+conda create -n mcil_evaluation_calvin python=3.8
+conda activate mcil_evaluation_calvin
 
 
 cd ./mcil_evaluation_calvin/calvin/calvin_env/tacto
